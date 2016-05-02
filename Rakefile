@@ -21,7 +21,7 @@ namespace :docs do
 	end
 
 	def berks_upload(directory)
-	  directory = 'C:/Users/Bilawne/chef-delta-repo/chef-test-repo/cookbooks/'
+	  #directory = 'C:/Users/Bilawne/chef-delta-repo/chef-test-repo/cookbooks/'
 	  Dir.foreach(directory) do |file|
 	  	unless file == '.' || file == '..'
 	    	system "cd #{directory}#{file} && berks upload"
