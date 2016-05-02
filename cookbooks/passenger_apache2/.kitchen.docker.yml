@@ -1,0 +1,106 @@
+driver:
+  name: dokken
+  chef_version: latest
+  privileged: true # because Docker and SystemD/Upstart
+
+transport:
+  name: dokken
+
+provisioner:
+  name: dokken
+
+verifier:
+  root_path: '/opt/verifier'
+  sudo: false
+
+platforms:
+- name: debian-7
+  driver:
+    image: debian:7
+    pid_one_command: /sbin/init
+    intermediate_instructions:
+      - RUN /usr/bin/apt-get update
+      - RUN /usr/bin/apt-get install apt-transport-https net-tools -y
+
+- name: debian-8
+  driver:
+    image: debian:8
+    pid_one_command: /bin/systemd
+    intermediate_instructions:
+      - RUN /usr/bin/apt-get update
+      - RUN /usr/bin/apt-get install apt-transport-https net-tools -y
+
+- name: centos-5
+  driver:
+    image: centos:5
+    platform: rhel
+    run_command: /sbin/init
+    provision_command:
+      - /usr/bin/yum install -y initscripts net-tools wget
+
+- name: centos-6
+  driver:
+    image: centos:6
+    intermediate_instructions:
+      - RUN yum -y install tar which initscripts
+
+- name: centos-7
+  driver:
+    image: centos:7
+    intermediate_instructions:
+      - RUN yum clean all
+      - RUN yum -y install net-tools lsof
+    pid_one_command: /usr/lib/systemd/systemd
+
+- name: fedora-23
+  driver:
+    image: fedora:23
+    pid_one_command: /usr/lib/systemd/systemd
+    intermediate_instructions:
+      - RUN dnf -y install tar yum
+
+- name: ubuntu-12.04
+  driver:
+    image: ubuntu-upstart:12.04
+    pid_one_command: /sbin/init
+    intermediate_instructions:
+      - RUN /usr/bin/apt-get update
+      - RUN /usr/bin/apt-get install apt-transport-https net-tools -y
+
+- name: ubuntu-14.04
+  driver:
+    image: ubuntu-upstart:14.04
+    pid_one_command: /sbin/init
+    intermediate_instructions:
+      - RUN /usr/bin/apt-get update
+      - RUN /usr/bin/apt-get install apt-transport-https net-tools -y
+
+- name: ubuntu-16.04
+  driver:
+    image: ubuntu:16.04
+    pid_one_command: /bin/systemd
+    intermediate_instructions:
+      - RUN /usr/bin/apt-get update
+      - RUN /usr/bin/apt-get install apt-transport-https net-tools -y
+
+suites:
+- name: default
+  run_list:
+  - recipe[passenger_apache2]
+  attributes: {}
+
+- name: package
+  run_list:
+  - recipe[passenger_apache2_test::package]
+  - recipe[passenger_apache2]
+  excludes: ["centos-6", "centos-7", "fedora-23"]
+  attributes: {}
+
+- name: version-override
+  run_list:
+  - recipe[passenger_apache2]
+  excludes: ["centos-6", "centos-7", "ubuntu-12.04", "fedora-23"]
+  attributes:
+    passenger:
+      version: "4.0.5"
+      module_path: "/opt/chef/embedded/lib/ruby/gems/1.9.1/gems/passenger-4.0.5/libout/apache2/mod_passenger.so"
