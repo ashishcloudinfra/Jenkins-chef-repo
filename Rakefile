@@ -11,6 +11,12 @@ namespace :docs do
 	  berks_upload(dir)
 	end
 
+    desc "This task for berks update"
+	  task :do_berks_update do
+	  dir = ENV['DIR']
+	  berks_update(dir)
+	end
+
 	def berks_install(directory)
 	  #directory = 'C:/Users/Bilawne/chef-delta-repo/chef-test-repo/cookbooks/'
 	  Dir.foreach(directory) do |file|
@@ -35,15 +41,6 @@ namespace :docs do
 	  		unless File.exist?("#{directory}#{file}/Berksfile.lock")
 	    	  system "cd #{directory}#{file} && berks update"
 	    	end
-		end
-	  end
-	end
-
-	def berks_upload(directory)
-	  #directory = 'C:/Users/Bilawne/chef-delta-repo/chef-test-repo/cookbooks/'
-	  Dir.foreach(directory) do |file|
-	  	unless file == '.' || file == '..'
-	    	system "cd #{directory}#{file} && berks upload"
 		end
 	  end
 	end
