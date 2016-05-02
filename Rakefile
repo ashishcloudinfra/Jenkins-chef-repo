@@ -1,16 +1,18 @@
 namespace :docs do
 	desc "This task for berks install"
 	  task :do_berks_install do
-	  berks_install
+	  dir = ENV['DIR']
+	  berks_install(dir)
 	end
 
 	desc "This task for berks upload"
 	  task :do_berks_upload do
-	  berks_upload
+	  dir = ENV['DIR']
+	  berks_upload(dir)
 	end
 
-	def berks_install
-	  directory = 'C:/Users/Bilawne/chef-delta-repo/chef-test-repo/cookbooks/'
+	def berks_install(directory)
+	  #directory = 'C:/Users/Bilawne/chef-delta-repo/chef-test-repo/cookbooks/'
 	  Dir.foreach(directory) do |file|
 	  	unless file == '.' || file == '..'
 	    	system "cd #{directory}#{file} && berks install"
@@ -18,7 +20,7 @@ namespace :docs do
 	  end
 	end
 
-	def berks_upload
+	def berks_upload(directory)
 	  directory = 'C:/Users/Bilawne/chef-delta-repo/chef-test-repo/cookbooks/'
 	  Dir.foreach(directory) do |file|
 	  	unless file == '.' || file == '..'
