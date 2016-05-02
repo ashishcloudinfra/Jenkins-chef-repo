@@ -28,5 +28,24 @@ namespace :docs do
 		end
 	  end
 	end
+	def berks_update(directory)
+	  #directory = 'C:/Users/Bilawne/chef-delta-repo/chef-test-repo/cookbooks/'
+	  Dir.foreach(directory) do |file|
+	  	unless file == '.' || file == '..'
+	  		unless File.exist?("#{directory}#{file}/Berksfile.lock")
+	    	  system "cd #{directory}#{file} && berks update"
+	    	end
+		end
+	  end
+	end
+
+	def berks_upload(directory)
+	  #directory = 'C:/Users/Bilawne/chef-delta-repo/chef-test-repo/cookbooks/'
+	  Dir.foreach(directory) do |file|
+	  	unless file == '.' || file == '..'
+	    	system "cd #{directory}#{file} && berks upload"
+		end
+	  end
+	end
 end
 
