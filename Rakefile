@@ -39,6 +39,7 @@ namespace :docs do
 	  #directory = 'C:/Users/Bilawne/chef-delta-repo/chef-test-repo/cookbooks/'
 	  Dir.foreach(directory) do |file|
 	  	unless file == '.' || file == '..'
+	  		puts "Name of cookbook is #{file}"
 	    	system "cd #{directory}#{file} && bundle install"
 		end
 	  end
