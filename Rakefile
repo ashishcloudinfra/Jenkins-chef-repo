@@ -49,7 +49,6 @@ namespace :docs do
 		task :do_kitchen_install do
 			dir = ENV['DIR']
 	        kitchen_install(dir)
-		end
 	end
 
 	def kitchen_install(directory)
@@ -60,7 +59,6 @@ namespace :docs do
 	  		puts "(in #{Dir.pwd})"
 		end
 	  end
-	end
-	
+	end	
 end
 
