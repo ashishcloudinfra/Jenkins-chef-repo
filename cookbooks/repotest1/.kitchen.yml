@@ -1,15 +1,15 @@
 ---
 driver:
-  name: vagrant
+  name: docker
 
 provisioner:
-  name: chef_solo
+  name: chef-zero
 
 platforms:
-  - name: ubuntu-14.04
   - name: centos-7.2
 
 suites:
   - name: default
     run_list:
+      - recipe[repotest1::default]
     attributes:
