@@ -44,5 +44,23 @@ namespace :docs do
 		end
 	  end
 	end
+
+	desc 'Run Test Kitchen'
+		task :do_kitchen_install do
+			dir = ENV['DIR']
+	        kitchen_install(dir)
+		end
+	end
+
+	def kitchen_install(directory)
+	  #directory = 'C:/Users/Bilawne/chef-delta-repo/chef-test-repo/cookbooks/'
+	  Dir.foreach(directory) do |file|
+	  	unless file == '.' || file == '..'
+	  		Dir.chdir("#{directory}#{file}")
+	  		puts "(in #{Dir.pwd})"
+		end
+	  end
+	end
+	
 end
 
