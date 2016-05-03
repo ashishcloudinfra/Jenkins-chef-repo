@@ -1,3 +1,5 @@
+require 'foodcritic'
+require 'kitchen'
 namespace :docs do
 	desc "This task for berks install"
 	  task :do_berks_install do
