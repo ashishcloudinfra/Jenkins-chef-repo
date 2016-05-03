@@ -57,6 +57,10 @@ namespace :docs do
 	  	unless file == '.' || file == '..'
 	  		Dir.chdir("#{directory}#{file}")
 	  		puts "(in #{Dir.pwd})"
+	  		Kitchen.logger = Kitchen.default_file_logger
+		    Kitchen::Config.new.instances.each do |instance|
+		      instance.create()
+		  end
 		end
 	  end
 	end	
