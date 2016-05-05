@@ -63,6 +63,7 @@ namespace :docs do
 		    Kitchen::Config.new.instances.each do |instance|
 		    instance.create()
 		    #  system "pwd"
+		   end
 		  end
 		end
 	 end
