@@ -66,6 +66,5 @@ namespace :docs do
 		  end
 		end
 	  end
-	end	
 end
 
