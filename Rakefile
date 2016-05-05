@@ -57,14 +57,14 @@ namespace :docs do
 	  #directory = 'C:/Users/Bilawne/chef-delta-repo/chef-test-repo/cookbooks/'
 	  Dir.foreach(directory) do |file|
 	  	unless file == '.' || file == '..'
-	  		Dir.chdir("#{directory}#{file}")
+	 # 		Dir.chdir("#{directory}#{file}")
 	  		#puts "(in #{Dir.pwd})"
 	  		#Kitchen.logger = Kitchen.default_file_logger
 		    #Kitchen::Config.new.instances.each do |instance|
 		      #instance.create()
-		      system "pwd"
+	#	      system "pwd"
 		  end
 		end
-	  end
+	 end
 end
 
