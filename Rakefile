@@ -62,7 +62,7 @@ namespace :docs do
 	  		#Kitchen.logger = Kitchen.default_file_logger
 		    #Kitchen::Config.new.instances.each do |instance|
 		      #instance.create()
-		      syste "pwd"
+		      system "pwd"
 		  end
 		end
 	  end
