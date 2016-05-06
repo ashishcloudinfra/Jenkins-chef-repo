@@ -1,15 +1,16 @@
 ---
 driver:
-  name: vagrant
+  name: docker
+  socket: tcp://52.33.252.193:2376
 
 provisioner:
   name: chef_solo
 
 platforms:
-  - name: ubuntu-14.04
   - name: centos-7.2
 
 suites:
   - name: default
     run_list:
+      - recipe[repotest2::default]
     attributes:
