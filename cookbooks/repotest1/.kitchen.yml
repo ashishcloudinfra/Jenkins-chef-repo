@@ -4,7 +4,7 @@ driver:
   socket: tcp://52.33.252.193:2376
 
 provisioner:
-  name: chef-zero
+  name: chef_zero
 
 platforms:
   - name: centos-7.2
