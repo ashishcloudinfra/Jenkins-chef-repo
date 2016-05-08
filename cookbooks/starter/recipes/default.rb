@@ -3,7 +3,6 @@
 
 log "Welcome to Chef, #{node["starter_name"]}!" do
   level :info
-end
-hello
+  
 
 # For more information, see the documentation: https://docs.chef.io/essentials_cookbook_recipes.html
