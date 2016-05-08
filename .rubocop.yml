@@ -16,7 +16,7 @@ LineLength:
   Enabled: false
 MethodLength:
   Max: 30
-SingleSpaceBeforeFirstArg:
+SpaceBeforeFirstArg:
   Enabled: false
 StringLiterals:
   Enabled: false
