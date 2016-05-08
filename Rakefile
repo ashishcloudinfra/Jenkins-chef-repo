@@ -54,13 +54,13 @@ namespace :docs do
 	end
 
 	desc 'Run Rubocop'
-		task :do_kitchen_install do
+		task :do_rubocop_run do
 			dir = ENV['DIR']
 	        rubocop_command(dir)
 	end
 
 	desc 'Run Foodcritic'
-		task :do_kitchen_install do
+		task :do_foodcritic_run do
 			dir = ENV['DIR']
 		    foodcritic_command(dir)
 	end
