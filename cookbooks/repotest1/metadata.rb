@@ -6,4 +6,3 @@ description      'Installs/Configures repotest1'
 long_description 'Installs/Configures repotest1'
 
 version          '0.1.0'
-
