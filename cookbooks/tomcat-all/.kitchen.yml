@@ -7,12 +7,7 @@ provisioner:
   name: chef_zero
 
 platforms:
-  - name: ubuntu
-    run_list:
-      - recipe[apt]
-    attributes:
-      apt:
-        compiletime: true
+  - name: centos
 suites:
   - name: default
     run_list:
