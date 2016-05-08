@@ -53,8 +53,19 @@ namespace :docs do
 	        kitchen_install(dir)
 	end
 
+	desc 'Run Rubocop'
+		task :do_kitchen_install do
+			dir = ENV['DIR']
+	        rubocop_command(dir)
+	end
+
+	desc 'Run Foodcritic'
+		task :do_kitchen_install do
+			dir = ENV['DIR']
+		    foodcritic_command(dir)
+	end
+
 	def kitchen_install(directory)
-	  #directory = 'C:/Users/Bilawne/chef-delta-repo/chef-test-repo/cookbooks/'
 	  Dir.foreach(directory) do |file|
 	  	unless file == '.' || file == '..'
 	  		Dir.chdir("#{directory}#{file}")
@@ -63,7 +74,26 @@ namespace :docs do
 	  		Kitchen.logger = Kitchen.default_file_logger
 		    Kitchen::Config.new.instances.each do |instance|
 		    instance.converge()
-		    #  system "pwd"
+		   end
+		  end
+		end
+	 end
+
+	def rubocop_command(directory)
+	  Dir.foreach(directory) do |file|
+	  	unless file == '.' || file == '..'
+	  		Dir.chdir("#{directory}#{file}")
+	  		sh 'rubocop .'
+		   end
+		  end
+		end
+	 end
+
+	 def foodcritic_command(directory)
+	  Dir.foreach(directory) do |file|
+	  	unless file == '.' || file == '..'
+	  		Dir.chdir("#{directory}#{file}")
+	  		sh 'foodcritic .'
 		   end
 		  end
 		end
