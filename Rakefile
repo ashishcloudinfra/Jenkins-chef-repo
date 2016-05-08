@@ -84,7 +84,6 @@ namespace :docs do
 	  	unless file == '.' || file == '..'
 	  		Dir.chdir("#{directory}#{file}")
 	  		sh 'rubocop .'
-		   end
 		  end
 		end
 	 end
@@ -95,7 +94,6 @@ namespace :docs do
 	  		Dir.chdir("#{directory}#{file}")
 	  		sh 'foodcritic .'
 		   end
-		  end
 		end
 	 end
 end
