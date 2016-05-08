@@ -96,5 +96,9 @@ namespace :docs do
 		   end
 		end
 	 end
+	 desc "Run Foodcritic lint checks"
+	  FoodCritic::Rake::LintTask.new(:foodcritic) do |t|
+	  t.options = { :fail_tags => ["any"] }
+	end
 end
 
