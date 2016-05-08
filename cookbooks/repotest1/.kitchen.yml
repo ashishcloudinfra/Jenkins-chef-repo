@@ -1,7 +1,7 @@
 ---
 driver:
   name: docker
-  socket: tcp://52.33.252.193:2376
+  #socket: tcp://52.33.252.193:2376
 
 provisioner:
   name: chef_zero
