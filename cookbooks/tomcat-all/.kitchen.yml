@@ -1,0 +1,24 @@
+---
+driver:
+  name: docker
+  socket: tcp://52.38.77.12:2376
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: centos
+  - name: ubuntu
+    run_list:
+      - recipe[apt]
+    attributes:
+      apt:
+        compiletime: true
+suites:
+  - name: default
+    run_list:
+      - recipe[java]
+      - recipe[tomcat-all::default]
+    attributes:
+      java:
+        jdk_version: 7
