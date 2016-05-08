@@ -7,7 +7,6 @@ provisioner:
   name: chef_zero
 
 platforms:
-  - name: centos
   - name: ubuntu
     run_list:
       - recipe[apt]
