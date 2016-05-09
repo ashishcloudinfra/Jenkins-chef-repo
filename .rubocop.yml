@@ -1,10 +1,13 @@
 AllCops:
-  Include:
-    - Berksfile
-    - Gemfile
-    - Rakefile
   Exclude:
-    - vendor/**/*
+    - 'cookbooks/*/Berksfile'
+    - 'cookbooks/*/Thorfile'
+    - 'cookbooks/*/Vagrantfile'
+    - 'Gemfile'
+    - 'cookbooks/*/metadata.rb'
+    - 'Rakefile'
+    - 'cookbooks/*/spec/*_spec.rb'
+    - 'environments/*'
 
 AlignParameters:
   Enabled: false
@@ -19,4 +22,8 @@ MethodLength:
 SpaceBeforeFirstArg:
   Enabled: false
 StringLiterals:
+  Enabled: false
+AsciiComments:
+  Enabled: false
+Style/FileName:
   Enabled: false

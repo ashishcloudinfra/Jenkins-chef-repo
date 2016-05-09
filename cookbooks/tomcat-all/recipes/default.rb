@@ -12,7 +12,7 @@
 tomcat_version = node['tomcat-all']['version']
 major_version = tomcat_version[0]
 download_url = "#{node['tomcat-all']['download_server']}dist/tomcat/tomcat-#{major_version}/v#{tomcat_version}/bin/apache-tomcat-#{tomcat_version}.tar.gz"
-#download_url = 'http://mirror.fibergrid.in/apache/tomcat/tomcat-7/v7.0.68/bin/apache-tomcat-7.0.68.tar.gz'
+# download_url = 'http://mirror.fibergrid.in/apache/tomcat/tomcat-7/v7.0.68/bin/apache-tomcat-7.0.68.tar.gz'
 
 # Create group
 group node['tomcat-all']['group']
