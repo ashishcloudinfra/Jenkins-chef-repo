@@ -75,7 +75,7 @@ file "#{node['tomcat-all']['tomcat_home']}/catalina.pid" do
   action :create
   not_if { ::File.exist?("#{node['tomcat-all']['tomcat_home']}/catalina.pid") }
 end
-
+=begin
 # Enabling tomcat service and restart the service if subscribed template has changed.
 service "tomcat#{major_version}" do
   supports :restart => true
@@ -84,3 +84,4 @@ service "tomcat#{major_version}" do
   subscribes :restart, "template[#{node['tomcat-all']['tomcat_home']}/bin/setenv.sh]", :delayed
   subscribes :restart, "template[#{node['tomcat-all']['tomcat_home']}/conf/server.xml]", :delayed
 end
+=end
