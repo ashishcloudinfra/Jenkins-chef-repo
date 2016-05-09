@@ -76,7 +76,7 @@ namespace :docs do
         puts "(in #{Dir.pwd})"
         system ("bundle install")
         Kitchen.logger = Kitchen.default_file_logger
-        Kitchen::Config.new.instances.each(&:verify)
+        Kitchen::Config.new.instances.each(&:converge)
       end
     end
    end
